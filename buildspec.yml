@@ -6,12 +6,10 @@ phases:
       nodejs: 18 # You can adjust this to your specific Node.js version
     commands:
       - echo "Installing dependencies..."
-      - npm install # Or yarn install if you are using Yarn
-
+    
   build:
     commands:
       - echo "Building React app..."
-      - npm run build # This command typically creates the 'build' folder (or 'dist' if configured)
 
 artifacts:
   files:
