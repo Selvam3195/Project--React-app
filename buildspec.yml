@@ -3,7 +3,6 @@ version: 0.2
 phases:
 install:
     commands:
-      - aws eks --region ap-south-1 update-kubeconfig --name ashokit-cluster13
  build:
     commands:
       - kubectl apply -f deployment.yml --validate=false # Apply your Deployment configuration
