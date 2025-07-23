@@ -5,6 +5,6 @@ phases:
     commands:
   build:
     commands: 
-      - $ KUBECONFIG=$HOME/.kube/config
+      - KUBECONFIG=$HOME/.kube/config
       - kubectl apply -f deployment.yml --validate=false # Apply your Deployment configuration
       - kubectl apply -f services.yml--validate=false
