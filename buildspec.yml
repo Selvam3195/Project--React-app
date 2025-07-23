@@ -3,5 +3,5 @@ version: 0.2
 phases:
   build:
     commands:
-      - sudo kubectl apply -f /home/ubuntu/deployment.yml # Apply your Deployment configuration
-      - sudo kubectl apply -f /home/ubuntu/service.yml # Apply your Service configuration
+      - sudo kubectl apply -f deployment.yml # Apply your Deployment configuration
+      - sudo kubectl apply -f service.yml # Apply your Service configuration
