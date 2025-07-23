@@ -5,5 +5,5 @@ phases:
     commands:
   build:
     commands:
-      - kubectl apply -f deployment.yml --validation false # Apply your Deployment configuration
-      - kubectl apply -f services.yml --validation false
+      - kubectl apply -f deployment.yml --validate=false # Apply your Deployment configuration
+      - kubectl apply -f services.yml--validate=false
