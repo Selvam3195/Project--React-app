@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-app
+labels:
+    app: react-app
+spec:
+  replicas: 1 # You can increase this for more instances
+  selector:
+    matchLabels:
+      app: react-app
+  template:
+    metadata:
+      labels:
+        app: react-app
+    spec:
+      containers:
+        - name: react-app-container
+          image: 124355647640.dkr.ecr.ap-south-1.amazonaws.com/reactproject:latest/reactapp:latest # Replace with your image
+          ports:
+            - containerPort: 3000
