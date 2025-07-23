@@ -1,7 +1,7 @@
 version: 0.0
 os: linux
 files:
-  - source: /
+  - source: /home/ubuntu/reactproject/Brain-Tasks-App/
     destination: /opt/codedeploy-agent/deployment-root/
 hooks:
   AfterInstall:
