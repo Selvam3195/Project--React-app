@@ -6,7 +6,7 @@ install:
       - curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
       - chmod +x ./kubectl
       - sudo mv ./kubectl /usr/local/bin/kubectl
-      - aws eks --region <ap-south-1 update-kubeconfig --name ashokit-cluster13
+      - aws eks --region ap-south-1 update-kubeconfig --name ashokit-cluster13
  build:
     commands:
       - kubectl apply -f deployment.yml --validate=false # Apply your Deployment configuration
