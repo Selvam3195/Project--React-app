@@ -3,5 +3,5 @@ version: 0.2
 phases:
   build:
     commands:
-      - sudo kubectl apply -f deployment.yml --validate=false # Apply your Deployment configuration
-      - sudo kubectl apply -f service.yml --validate=false # Apply your Service configuration
+      - kubectl apply -f deployment.yml --validate=false # Apply your Deployment configuration
+      - kubectl apply -f service.yml --validate=false # Apply your Service configuration
