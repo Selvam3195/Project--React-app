@@ -5,5 +5,5 @@ phases:
     commands:
   build:
     commands:
-      - kubectl apply -f /home/ubuntu/deployment.yml # Apply your Deployment configuration
-      - kubectl apply -f /home/ubuntu/services.yml 
+      - kubectl apply -f deployment.yml # Apply your Deployment configuration
+      - kubectl apply -f services.yml 
