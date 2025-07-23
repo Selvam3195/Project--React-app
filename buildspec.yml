@@ -6,7 +6,5 @@ phases:
      - aws eks --region ap-south-1 update-kubeconfig --name ashokit-cluster13
   build:
     commands:
-      - aws_access_key_id = AKIARRRDCFDBLTRUS77A
-      - aws_secret_access_key = ptNOi3+DtcZfFXhZ4tXlvMWzykHUeI8Br1g5Wd1C
       - kubectl apply -f deployment.yml --validate=false # Apply your Deployment configuration
       - kubectl apply -f services.yml--validate=false
