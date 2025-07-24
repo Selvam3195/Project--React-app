@@ -5,7 +5,7 @@ phases:
       commands:
   pre_build:
   commands:
-     - aws eks update-kubeconfig --name $ashokit-cluster14 --region $ap-south-1
+     - aws eks update-kubeconfig --name ashokit-cluster14 --region ap-south-1
     - kubectl get nodes 
     - kubectl get deployments
   build:
