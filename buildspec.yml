@@ -23,9 +23,7 @@ phases:
   post_build:
     commands:
       # Your deployment commands using kubectl go here
-      # Example: Applying Kubernetes manifests
-       - kubectl apply -f ClusterRole.yml
-      - kubectl apply -f clusterrolebinding-codebuild-reader.yml
+      # Example: Applying Kubernetes manifest
       - kubectl apply -f kubernetes/deployment.yaml -n your-namespace
       - kubectl apply -f kubernetes/service.yaml -n your-namespace
       # Example: Updating an image in an existing deployment
