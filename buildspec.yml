@@ -22,8 +22,8 @@ phases:
     commands:
       # Your deployment commands using kubectl go here
       # Example: Applying Kubernetes manifest
-      - kubectl apply -f kubernetes/deployment.yaml -n your-namespace
-      - kubectl apply -f kubernetes/service.yaml -n your-namespace
+      - kubectl apply -f deployment.yml
+      - kubectl apply -f service.yml
       # Example: Updating an image in an existing deployment
       # - kubectl set image deployment/your-deployment-name your-container-name=your-image-name:latest -n your-namespace
       - echo "Deployment phase complete."
