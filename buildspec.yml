@@ -1,7 +1,4 @@
-env:
-  variables:
-    KUBERNETES_VERSION: "1.19" # Replace with your EKS cluster's Kubernetes version
-    EKS_CLUSTER_NAME: "ashokit-cluster15" # Replace with your EKS cluster name
+version: 0.2
 phases:
   install:
     commands:
