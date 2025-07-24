@@ -1,12 +1,43 @@
-version: 0.2
-
+nv:
+  variables:
+    KUBERNETES_VERSION: "1.19" # Replace with your EKS cluster's Kubernetes version
+    EKS_CLUSTER_NAME: "ashokit-cluster15" # Replace with your EKS cluster name
 phases:
   install:
+    commands:.
+      # Install kubectl
+      - curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.19.6/2021-01-05/bin/linux/amd64/kubectl# Adjust URL as needed
+      - chmod +x ./kubectl
+      - mv ./kubectl /usr/local/bin/kubectl
+	  - curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+      - mv ./tmp/eksctl /usr/local/bin
+	  - eksctl create cluster --name ashokit-cluster15--region ap-south-1 --node-type t2.medium  --zones ap-south-1a,ap-south-1b
+  pre_build:
     commands:
+      # Update kubeconfig for EKS cluster access
+      # This command adds the EKS cluster to the kubeconfig file, allowing kubectl to interact with it.
+      - aws eks update-kubeconfig --name ashokit-cluster15 --region ap-south-1
+
+      # (Optional) If your CodeBuild service role is not already mapped in the aws-auth ConfigMap
+      # You might need to update the aws-auth configmap to grant the CodeBuild service role permissions to interact with the EKS cluster.
+      # This can be done by adding a mapRoles entry to the aws-auth ConfigMap.
+      # However, AWS recommends using EKS Access Entries for managing cluster access for IAM roles and users.
+      # If using EKS Access Entries, you would create an Access Entry for your CodeBuild service role with appropriate permissions.
+      
+      # Example of kubectl commands you might run
+      - kubectl get nodes 
+      - kubectl get deployments
   build:
-    commands: 
-     - aws eks update-kubeconfig --name ashokit-cluster14 --region ap-south-1
-     - kubectl get nodes 
-     - kubectl get deployments
-     - kubectl apply -f deployment.yml --validate=false # Apply your Deployment configuration
-     - kubectl apply -f services.yml--validate=false
+    commands:
+      - echo "Build phase complete."
+  post_build:
+    commands:
+      # Your deployment commands using kubectl go here
+      # Example: Applying Kubernetes manifests
+      - kubectl apply -f kubernetes/deployment.yaml -n your-namespace
+      - kubectl apply -f kubernetes/service.yaml -n your-namespace
+      # Example: Updating an image in an existing deployment
+      # - kubectl set image deployment/your-deployment-name your-container-name=your-image-name:latest -n your-namespace
+      - echo "Deployment phase complete."
+
+
