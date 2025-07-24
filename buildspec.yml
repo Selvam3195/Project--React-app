@@ -7,8 +7,6 @@ phases:
       # Update kubeconfig for EKS cluster access
       # This command adds the EKS cluster to the kubeconfig file, allowing kubectl to interact with it.
       - aws eks update-kubeconfig --name ashokit-cluster17 --region ap-south-1
-      - kubectl apply -f deployment-reader.yml 
-      - kubectl apply -f codebuild-deployment-binding.yml
 
       # (Optional) If your CodeBuild service role is not already mapped in the aws-auth ConfigMap
       # You might need to update the aws-auth configmap to grant the CodeBuild service role permissions to interact with the EKS cluster.
