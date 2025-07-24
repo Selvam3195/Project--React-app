@@ -1,8 +1,8 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: node-reader
+  name: codebuild-clusterrole-reader
 rules:
-- apiGroups: [""] # Core API group
-  resources: ["nodes"]
-  verbs: ["get", "list"]
+- apiGroups: ["rbac.authorization.k8s.io"]
+  resources: ["clusterroles"]
+  verbs: ["get", "list", "watch"] 
