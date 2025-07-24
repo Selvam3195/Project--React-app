@@ -15,8 +15,6 @@ phases:
       # If using EKS Access Entries, you would create an Access Entry for your CodeBuild service role with appropriate permissions.
       
       # Example of kubectl commands you might run
-      - kubectl get nodes 
-      - kubectl get deployments
   build:
     commands:
       - echo "Build phase complete."
