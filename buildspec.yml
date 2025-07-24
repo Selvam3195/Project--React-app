@@ -2,8 +2,17 @@ version: 0.2
 
 phases:
   install:
-    commands:
+      commands:
+  pre_build:
+  commands:
+     - aws eks update-kubeconfig --name $ashokit-cluster14 --region $ap-south-1
+    - kubectl get nodes 
+    - kubectl get deployments
   build:
+    commands:
+    - echo "Build phase complete."
+    post_build:
     commands:
       - kubectl apply -f deployment.yml --validate=false # Apply your Deployment configuration
       - kubectl apply -f services.yml--validate=false
+        - echo "Deployment phase complete."
