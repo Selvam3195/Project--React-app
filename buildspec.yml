@@ -8,9 +8,9 @@ phases:
       # Install kubectl
       - curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.19.6/2021-01-05/bin/linux/amd64/kubectl# Adjust URL as needed
       - chmod +x ./kubectl
-      - mv ./kubectl /usr/local/bin/kubectl
+      - sudo mv ./kubectl /usr/local/bin/kubectl
 	  - curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
-      - mv ./tmp/eksctl /usr/local/bin
+      - sudo mv ./tmp/eksctl /usr/local/bin
 	  - eksctl create cluster --name ashokit-cluster15--region ap-south-1 --node-type t2.medium  --zones ap-south-1a,ap-south-1b
   pre_build:
     commands:
