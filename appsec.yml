@@ -1,10 +1,19 @@
-version: 0.0
-os: linux
-files:
-  - source: /home/ubuntu/reactproject/Brain-Tasks-App/
-    destination: /var/www/html/
-hooks:
-  AfterInstall:
-    - location: /home/ubuntu/reactproject/Brain-Tasks-App/deploy_kubernetes.sh
-      timeout: 300
-      runas: root
+version: 1.0
+
+project:
+  name: react-app
+  framework: react
+  build_dir: dist
+
+scan:
+  include:
+    - dist/**
+ci:
+  enabled: true
+  fail_on_issue: true
+
+reporting:
+  formats:
+    - html
+    - json
+  output_dir: appsec-reports
