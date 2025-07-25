@@ -5,7 +5,7 @@ Resources:
 
     Type: Kubernetes::Service
     Properties:
-      TaskDefinition: deployment.yaml
+      TaskDefinition: deployment.yml
       AppSpecContent:
         Files:
           - source: /
