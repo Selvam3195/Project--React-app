@@ -12,7 +12,7 @@ fi
 
 # Apply Kubernetes manifests
 echo "[ApplicationStart] Applying Kubernetes manifests..."
-kubectl apply -f deployment.yaml
+kubectl apply -f deployment.yml
 
 # Wait for the deployment rollout
 echo "[ApplicationStart] Waiting for rollout to complete..."
