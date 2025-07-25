@@ -3,14 +3,25 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 18 # You can adjust this to your specific Node.js version
+      nodejs: 18
     commands:
-
+      - echo Installing dependencies...
+      # If you have any dependencies (like Vite), you can install them here
+      # - npm install
   build:
     commands:
+      - echo Build phase starting...
+      # If using a tool like Vite, uncomment and customize below
+      # - npm run build
+      # For pure HTML/CSS/JS, you may skip actual build
+  post_build:
+    commands:
+      - echo Build completed. Preparing artifacts...
 
 artifacts:
   files:
-    - '**/*' # Include all files and subdirectories
-  base-directory: dist # This should be the folder where your React build output resides (e.g., 'build' or 'dist')
-  discard-paths: yes # This ensures only the contents of 'build' or 'dist' are deployed, not the folder itself
+    - index.html
+    - vite.svg
+    - assets/**
+
+  discard-paths: no
