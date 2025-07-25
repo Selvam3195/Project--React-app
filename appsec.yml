@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: /home/ubuntu/reactproject/Brain-Tasks-App/
-    destination: /opt/codedeploy-agent/deployment-root/
+    destination: /var/www/html/
 hooks:
   AfterInstall:
     - location: /home/ubuntu/reactproject/Brain-Tasks-App/deploy_kubernetes.sh
