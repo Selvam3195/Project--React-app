@@ -16,7 +16,7 @@ if ! kubectl get nodes; then
 fi
 
 # Example: Validate manifest file presence
-if [ ! -f deployment.yaml ]; then
+if [ ! -f deployment.yml ]; then
   echo "[AfterInstall] ERROR: Kubernetes manifest not found."
   exit 1
 fi
