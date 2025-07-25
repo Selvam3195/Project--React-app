@@ -1,0 +1,20 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18 # You can adjust this to your specific Node.js version
+    commands:
+      - echo "Installing dependencies..."
+      - npm install # Or yarn install if you are using Yarn
+
+  build:
+    commands:
+      - echo "Building React app..."
+      - npm run build # This command typically creates the 'build' folder (or 'dist' if configured)
+
+artifacts:
+  files:
+    - '**/*' # Include all files and subdirectories
+  base-directory: dist # This should be the folder where your React build output resides (e.g., 'build' or 'dist')
+  discard-paths: yes # This ensures only the contents of 'build' or 'dist' are deployed, not the folder itself
