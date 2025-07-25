@@ -8,8 +8,6 @@ phases:
 
   build:
     commands:
-      - echo "Building React app..."
-      - npm run build # This command typically creates the 'build' folder (or 'dist' if configured) 
 
 artifacts:
   files:
