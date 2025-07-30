@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: react-app-container
-          image: 124355647640.dkr.ecr.ap-south-1.amazonaws.com/reactproject:latest/reactapp:latest # Replace with your image
+          image: 124355647640.dkr.ecr.ap-south-1.amazonaws.com/reactproject:latest/reactapp:latest  # Replace with your image
           ports:
             - containerPort: 3000
