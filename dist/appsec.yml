@@ -1,10 +1,9 @@
 version: 0.0
-os: linux
-files:
-  - source: /
-    destination: /opt/codedeploy-agent/deployment-root/
-hooks:
-  AfterInstall:
-    - location: /home/ubuntu/reactproject/Brain-Tasks-App/deploy_kubernetes.sh
-      timeout: 300
-      runas: root
+
+Resources:
+  - ViteApp:
+      Type: Kubernetes::Manifest
+      Properties:
+        ClusterName: your-cluster-name
+        Namespace: default
+        TaskDefinition: k8s-manifests/deployment.yml
