@@ -4,7 +4,7 @@ metadata:
   name: vite-service
 spec:
   selector:
-    app: vite-app
+    app: my-app
   ports:
     - protocol: TCP
       port: 80
