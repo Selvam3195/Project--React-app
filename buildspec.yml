@@ -13,7 +13,7 @@ phases:
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
-      - 124355647640=$(aws sts get-caller-identity --query 'Account' --output text)
+      - ACCOUNT_ID=124355647640
       - REPO_NAME=react-app   # <-- replace with your ECR repo name
       - REGION=ap-south-1            # <-- replace with your AWS region
       - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 124355647640.dkr.ecr.ap-south-1.amazonaws.com
