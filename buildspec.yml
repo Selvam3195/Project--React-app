@@ -1,27 +1,37 @@
 version: 0.2
 
+env:
+  variables:
+    IMAGE_TAG: latest
+  # Optionally uncomment this if using environment variables in CodeBuild
+  # parameter-store:
+  #   AWS_DEFAULT_REGION: "/project/aws/default_region"
+  #   ACCOUNT_ID: "/project/aws/account_id"
+  #   REPO_NAME: "/project/ecr/repo_name"
+
 phases:
-  install:
-    runtime-versions:
-      nodejs: 18
+  pre_build:
     commands:
-      - echo Installing dependencies...
-      # If you have any dependencies (like Vite), you can install them here
-      # - npm install
+      - echo Logging in to Amazon ECR...
+      - 124355647640=$(aws sts get-caller-identity --query 'Account' --output text)
+      - REPO_NAME=react-app   # <-- replace with your ECR repo name
+      - REGION=ap-south-1            # <-- replace with your AWS region
+      - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 124355647640.dkr.ecr.ap-south-1.amazonaws.com
+      - echo ECR login successful.
+
   build:
     commands:
-      - echo Build phase starting...
-      # If using a tool like Vite, uncomment and customize below
-      # - npm run build
-      # For pure HTML/CSS/JS, you may skip actual build
+      - echo Building the Docker image...
+      - docker build -t react-app.
+      - docker tag react-app:latest 124355647640.dkr.ecr.ap-south-1.amazonaws.com/react-app:latest
+      - echo Docker image tagged successfully.
+
   post_build:
     commands:
-      - echo Build completed. Preparing artifacts...
+      - echo Pushing the Docker image to ECR...
+      - docker push 124355647640.dkr.ecr.ap-south-1.amazonaws.com/react-app:latest
+      - echo Docker image pushed to ECR successfully.
 
 artifacts:
   files:
-    - index.html
-    - vite.svg
-    - assets/**
-
-  discard-paths: no
+    - '**/*'
