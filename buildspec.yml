@@ -18,6 +18,7 @@ phases:
       - REGION=ap-south-1            # <-- replace with your AWS region
       - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 124355647640.dkr.ecr.ap-south-1.amazonaws.com
       - echo ECR login successful.
+      - aws eks update-kubeconfig --region ap-south-1 --mycluster
 
   build:
     commands:
