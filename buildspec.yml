@@ -22,7 +22,7 @@ phases:
   build:
     commands:
       - echo Building the Docker image...
-      - docker build -t react-app.
+      - docker buildx build https://github.com/Selvam3195/Project--React-app.git
       - docker tag react-app:latest 124355647640.dkr.ecr.ap-south-1.amazonaws.com/react-app:latest
       - echo Docker image tagged successfully.
 
