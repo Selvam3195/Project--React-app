@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: vite-container
-          image: 124355647640.dkr.ecr.ap-south-1.amazonaws.com/react-app
+          image: 124355647640.dkr.ecr.ap-south-1.amazonaws.com/my-react-app
           ports:
             - containerPort: 80 
