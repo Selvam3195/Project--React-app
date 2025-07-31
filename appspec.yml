@@ -6,4 +6,6 @@ Resources:
       Properties:
         ClusterName: my-eks-cluster
         Namespace: default
-        TaskDefinition: deployment.yml
+        TaskDefinition: 
+        deployment.yml --validate=false
+        service.yml
