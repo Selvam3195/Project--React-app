@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app
-labels:
-    app: app
+  name: vite-app
+  labels:
+    app: vite-app
 spec:
-  replicas: 1 # You can increase this for more instances
+  replicas: 1
   selector:
     matchLabels:
-      app: app
+      app: vite-app
   template:
     metadata:
       labels:
-        app: app
+        app: vite-app
     spec:
       containers:
-        - name: react-app-container
-          image: 124355647640.dkr.ecr.ap-south-1.amazonaws.com/reactproject:latest/reactapp:latest  # Replace with your image
+        - name: vite-container
+          image: 124355647640.dkr.ecr.ap-south-1.amazonaws.com/react-app
           ports:
-            - containerPort: 3000
+            - containerPort: 80 
