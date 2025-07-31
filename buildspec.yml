@@ -14,7 +14,7 @@ phases:
     commands:
       - echo Logging in to Amazon ECR...
       - ACCOUNT_ID=124355647640
-      - REPO_NAME=react-app   # <-- replace with your ECR repo name
+      - REPO_NAME=my-react-app   # <-- replace with your ECR repo name
       - REGION=ap-south-1            # <-- replace with your AWS region
       - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 124355647640.dkr.ecr.ap-south-1.amazonaws.com
       - echo ECR login successful.
@@ -23,7 +23,7 @@ phases:
     commands:
       - echo Building the Docker image...
       - docker build https://github.com/Selvam3195/Project--React-app.git
-      - docker tag react-app:latest 124355647640.dkr.ecr.ap-south-1.amazonaws.com/react-app:latest
+      - docker tag my-react-app:latest 124355647640.dkr.ecr.ap-south-1.amazonaws.com/my-react-app:latest
       - echo Docker image tagged successfully.
 
   post_build:
