@@ -3,18 +3,22 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 18 # You can adjust this to your specific Node.js version
+      nodejs: 18
     commands:
-      - echo "Installing dependencies..."
-      - npm install # Or yarn install if you are using Yarn
+      - echo Installing dependencies...
+      - npm ci
 
   build:
     commands:
-      - echo "Building React app..."
-      - npm run build # This command typically creates the 'build' folder (or 'dist' if configured)
+      - echo Building app for production...
+      - npm run build
+      - echo Preparing deployment bundle...
+      - mkdir -p codedeploy_bundle
+      - cp -r dist/* codedeploy_bundle/
+      - cp appspec.yaml codedeploy_bundle/
+      - cp -r k8s-manifests/ codedeploy_bundle/  # If deploying to EKS
 
 artifacts:
+  base-directory: codedeploy_bundle
   files:
-    - '**/*' # Include all files and subdirectories
-  base-directory: dist # This should be the folder where your React build output resides (e.g., 'build' or 'dist')
-  discard-paths: yes # This ensures only the contents of 'build' or 'dist' are deployed, not the folder itself
+    - '**/*'
