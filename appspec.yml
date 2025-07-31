@@ -7,5 +7,7 @@ Resources:
         ClusterName: my-eks-cluster
         Namespace: default
         TaskDefinition: 
+        codepipeline-rbac.yml
         deployment.yml --validate=false
         service.yml
+        
