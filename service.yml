@@ -3,6 +3,7 @@ kind: Service
 metadata:
   name: vite-service
 spec:
+  type: LoadBalancer
   selector:
     app: my-app
   ports:
